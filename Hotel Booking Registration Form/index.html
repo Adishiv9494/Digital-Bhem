@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+<title>Hotel Booking Registration Form</title>
+
+</head>
+<body>
+    <div class="container">
+        <h2>Hotel Booking Registration Form</h2>
+        <form id="bookingForm" onsubmit="return validateForm()">
+            <h3>Customer Info:</h3>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+    
+            <label for="checkin">Check-in Date:</label>
+            <input type="date" id="checkin" name="checkin" onchange="calculateNumberOfDays()" required>
+    
+            <label for="checkout">Check-out Date:</label>
+            <input type="date" id="checkout" name="checkout" onchange="calculateNumberOfDays()" required>
+    
+            <label for="totalDays">Total Days:</label>
+            <input type="number" id="totalDays" name="totalDays" readonly>
+    
+            <label for="totalPersons">Total Persons:</label>
+            <input type="number" id="totalPersons" name="totalPersons" min="1" onchange="calculateTotal()" required>
+    
+            <label for="perPersonCost">Per Person Cost (₹):</label>
+            <input type="number" id="perPersonCost" name="perPersonCost" min="0" onchange="calculateTotal()" required>
+    
+            <h3>Room Info:</h3>
+            <label for="roomType">Room Type:</label>
+            <select id="roomType" name="roomType" onchange="calculateTotal()">
+                <option value="delux">Delux</option>
+                <option value="suite">Suite</option>
+            </select>
+    
+            <label for="amenities">Amenities:</label>
+            <input type="checkbox" id="ac" name="ac" onchange="calculateTotal()"> AC
+            <input type="checkbox" id="locker" name="locker" onchange="calculateTotal()"> Locker
+    
+            <h3>Payment and Balance:</h3>
+            <label for="advance">Advance Amount (₹):</label>
+            <input type="number" id="advance" name="advance" min="0" onchange="calculateRemainingAmount()" required>
+    
+            <label for="total">Total Amount (₹):</label>
+            <input type="text" id="total" name="total" readonly class="total">
+    
+            <label for="balance">Remaining Amount (₹):</label>
+            <input type="text" id="balance" name="balance" readonly class="total">
+    
+            <button type="button" class="btn" onclick="calculateTotal()">Calculate Total</button>
+            <button type="submit" class="btn">Book Now</button>
+        </form>
+    </div>
+    
+    
+<script src="script.js"></script>
+</body>
+</html>
